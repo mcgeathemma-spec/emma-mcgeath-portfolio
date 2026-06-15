@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Senior Instructional Systems Designer specializing in high-fidelity simulations, complex interactive multimedia, and immersive scenario-based training. Also known as Learning Experience Designer, Curriculum Developer, Training Systems Analyst, Learning and Development Specialist.">
+<title>Emma McGeath | Instructional Systems Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --stone:#2E2820;
+  --warm-dark:#4A3F38;
+  --warm-mid:#6B5C52;
+  --taupe:#9C8B82;
+  --sand:#C8B8B0;
+  --blush:#EFE6DF;
+  --blush-light:#F7F2EE;
+  --cream:#FBF8F5;
+  --white:#FFFFFF;
+  --gold:#9A7250;
+  --gold-light:#C4A882;
+  --text:#2E2820;
+  --muted:#7A6A60;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;font-weight:300}
+
+nav{
+  background:var(--white);
+  border-bottom:0.5px solid rgba(46,40,32,0.1);
+  padding:1.2rem 4rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;top:0;z-index:100;
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--stone);
+  font-size:1.4rem;
+  font-weight:400;
+  letter-spacing:0.04em;
+}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{
+  color:var(--taupe);
+  text-decoration:none;
+  font-size:0.78rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  transition:color 0.25s;
+  cursor:pointer;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--stone)}
+
+section{display:none}
+section.active{display:block}
+
+.hero{
+  background:var(--blush-light);
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  padding:5rem 4rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-texture{
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(circle at 80% 50%, rgba(196,168,130,0.12) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(154,114,80,0.07) 0%, transparent 50%);
+}
+.hero-ring{
+  position:absolute;
+  right:-100px;top:50%;transform:translateY(-50%);
+  width:500px;height:500px;
+  border-radius:50%;
+  border:0.5px solid rgba(154,114,80,0.15);
+}
+.hero-ring2{
+  position:absolute;
+  right:-40px;top:50%;transform:translateY(-50%);
+  width:360px;height:360px;
+  border-radius:50%;
+  border:0.5px solid rgba(154,114,80,0.1);
+}
+.hero-inner{max-width:660px;position:relative;z-index:1}
+.hero-eyebrow{
+  font-size:0.72rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:400;
+  margin-bottom:1.4rem;
+}
+.hero-sub{
+  color:var(--warm-mid);
+  font-size:1.02rem;
+  font-weight:300;
+  max-width:580px;
+  margin-bottom:2.4rem;
+  line-height:1.85;
+}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--gold);
+  color:var(--white);
+  padding:0.75rem 2rem;
+  font-family:'Jost',sans-serif;
+  font-size:0.75rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border:none;
+  transition:background 0.25s;
+}
+.btn-primary:hover{background:var(--warm-dark)}
+.btn-ghost{
+  background:transparent;
+  color:var(--warm-mid);
+  padding:0.75rem 2rem;
+  font-family:'Jost',sans-serif;
+  font-size:0.75rem;
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border:0.5px solid rgba(107,92,82,0.35);
+  transition:border-color 0.25s,color 0.25s;
+}
+.btn-ghost:hover{border-color:var(--warm-mid);color:var(--stone)}
+
+.stats-bar{
+  background:var(--white);
+  border-bottom:0.5px solid rgba(46,40,32,0.07);
+  padding:1.6rem 4rem;
+  display:flex;
+  gap:0;
+}
+.stat{
+  flex:1;
+  padding-right:2rem;
+  border-right:0.5px solid rgba(46,40,32,0.08);
+  margin-right:2rem;
+}
+.stat:last-child{border-right:none;margin-right:0}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--stone);
+  font-size:1.6rem;
+  font-weight:400;
+  line-height:1.2;
+}
+.stat-label{
+  color:var(--taupe);
+  font-size:0.72rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-top:0.15rem;
+}
+
+.page-content{padding:4rem 4rem;max-width:1060px;margin:0 auto}
+
+.section-label{
+  font-size:0.68rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:400;
+  margin-bottom:0.5rem;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.1rem;
+  font-weight:400;
+  color:var(--stone);
+  margin-bottom:2.8rem;
+  padding-bottom:1.2rem;
+  border-bottom:0.5px solid rgba(46,40,32,0.1);
+}
+
+.about-layout{display:grid;grid-template-columns:1fr 300px;gap:0;align-items:start}
+.about-main{padding-right:3rem;border-right:0.5px solid rgba(46,40,32,0.1)}
+.about-sidebar{padding-left:3rem}
+.about-text p{
+  color:var(--muted);
+  font-weight:300;
+  line-height:1.9;
+  margin-bottom:1.1rem;
+  font-size:0.93rem;
+}
+.about-text p strong{color:var(--muted);font-weight:300}
+
+.title-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  margin-top:1.8rem;
+  padding-top:1.6rem;
+  border-top:0.5px solid rgba(46,40,32,0.08);
+}
+.title-pill{
+  background:var(--blush);
+  color:var(--warm-mid);
+  padding:0.3rem 0.85rem;
+  font-size:0.93rem;
+  letter-spacing:0.03em;
+  border:0.5px solid rgba(154,114,80,0.18);
+}
+
+.sidebar{display:flex;flex-direction:column;gap:0}
+.sidebar-block{padding:1.4rem 0;border-bottom:0.5px solid rgba(46,40,32,0.08)}
+.sidebar-block:first-child{padding-top:0}
+.sidebar-block:last-child{border-bottom:none}
+.sidebar-heading{
+  font-size:0.78rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:400;
+  margin-bottom:0.9rem;
+}
+.about-main .sidebar-list{list-style:disc;padding-left:1.2rem}
+.about-main .sidebar-list li{
+  padding:0.35rem 0;
+  border-bottom:none;
+  font-size:0.93rem;
+  color:var(--muted);
+  font-weight:300;
+  line-height:1.6;
+  display:list-item;
+}
+.about-main .sidebar-list li::marker{color:var(--sand)}
+.sidebar-list li{
+  padding:0.45rem 0;
+  border-bottom:0.5px solid rgba(46,40,32,0.05);
+  font-size:0.93rem;
+  color:var(--muted);
+  font-weight:300;
+  line-height:1.5;
+}
+.sidebar-list li:last-child{border-bottom:none}
+.sidebar-list li strong{color:var(--warm-dark);font-weight:400}
+.sidebar-list li span{
+  display:block;
+  font-size:0.82rem;
+  color:var(--taupe);
+  margin-top:0.1rem;
+}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.portfolio-card{
+  background:var(--white);
+  border:0.5px solid rgba(46,40,32,0.09);
+  transition:transform 0.25s,box-shadow 0.25s;
+  display:flex;
+  flex-direction:column;
+}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(46,40,32,0.08)}
+.card-thumb{
+  height:156px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.6rem;
+}
+.card-thumb.warm{background:#F2E8DF}
+.card-thumb.blue{background:#E4ECF4}
+.card-thumb.teal{background:#DFF0EA}
+.card-body{padding:1.3rem;flex:1;display:flex;flex-direction:column}
+.card-tag{
+  font-size:0.67rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-weight:400;
+  margin-bottom:0.5rem;
+}
+.card-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;
+  font-weight:400;
+  color:var(--stone);
+  margin-bottom:0.5rem;
+  line-height:1.3;
+}
+.card-desc{font-size:0.93rem;color:var(--muted);font-weight:300;line-height:1.65;flex:1}
+.nda-note{
+  margin-top:0.9rem;
+  padding-top:0.9rem;
+  border-top:0.5px solid rgba(46,40,32,0.07);
+  font-size:0.76rem;
+  color:var(--taupe);
+  font-style:italic;
+  line-height:1.6;
+}
+
+.detail-back{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--taupe);
+  cursor:pointer;
+  margin-bottom:2.5rem;
+  transition:color 0.2s;
+}
+.detail-back:hover{color:var(--stone)}
+.detail-section{
+  margin-bottom:3rem;
+  padding-bottom:3rem;
+  border-bottom:0.5px solid rgba(46,40,32,0.08);
+}
+.detail-section:last-child{border-bottom:none}
+.detail-section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;
+  font-weight:400;
+  color:var(--stone);
+  margin-bottom:1.2rem;
+}
+.detail-placeholder{
+  background:var(--blush-light);
+  border:0.5px dashed rgba(154,114,80,0.3);
+  padding:2rem;
+  color:var(--taupe);
+  font-size:0.93rem;
+  font-weight:300;
+  font-style:italic;
+  line-height:1.7;
+  margin-bottom:1.2rem;
+}
+.detail-link{
+  display:inline-block;
+  background:var(--blush);
+  border:0.5px solid rgba(154,114,80,0.25);
+  color:var(--gold);
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:0.6rem 1.4rem;
+  cursor:pointer;
+  transition:background 0.2s;
+}
+.detail-link:hover{background:var(--sand)}
+  background:var(--white);
+  border:0.5px solid rgba(46,40,32,0.09);
+  padding:2.5rem 3rem;
+  max-width:680px;
+  margin:0 auto;
+  text-align:center;
+}
+.resume-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;
+  font-weight:400;
+  color:var(--stone);
+  margin-bottom:0.6rem;
+}
+.resume-sub{
+  font-size:0.93rem;
+  color:var(--muted);
+  font-weight:300;
+  line-height:1.8;
+  margin-bottom:0.5rem;
+}
+.resume-note{
+  font-size:0.82rem;
+  color:var(--taupe);
+  font-style:italic;
+  margin-bottom:2rem;
+}
+.resume-specs{
+  display:flex;
+  justify-content:center;
+  gap:2.5rem;
+  padding:1.5rem 0;
+  border-top:0.5px solid rgba(46,40,32,0.08);
+  border-bottom:0.5px solid rgba(46,40,32,0.08);
+  margin-bottom:2rem;
+  flex-wrap:wrap;
+}
+.resume-spec-item{text-align:center}
+.resume-spec-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--taupe);margin-bottom:0.2rem}
+.resume-spec-val{font-size:0.93rem;color:var(--warm-dark);font-weight:400}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="show('home')" style="cursor:pointer">Emma <span>McGeath</span></div>
+  <div class="nav-links">
+    <a onclick="show('home')" id="nav-home">Home</a>
+    <a onclick="show('about')" id="nav-about">About</a>
+    <a onclick="show('portfolio')" id="nav-portfolio">Portfolio</a>
+    <a onclick="show('resume')" id="nav-resume">Resume</a>
+  </div>
+</nav>
+
+<section id="hero-section" class="active">
+  <div class="hero">
+    <div class="hero-texture"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Senior Instructional Systems Designer</div>
+      <p class="hero-sub">Specializing in high-fidelity simulations, complex interactive multimedia, and immersive scenario-based training across interactivity levels up to complex open-world simulation. I take a systematic approach to every project, carrying training from needs assessment through evaluation with a focus on real performance outcomes.</p>
+      <div class="cta-row">
+        <button class="btn-primary" onclick="show('portfolio')">View my work</button>
+        <button class="btn-ghost" onclick="show('about')">About me</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="page-content">
+    <div class="section-label">Background</div>
+    <div class="section-title">About me</div>
+    <div class="about-layout">
+      <div class="about-main">
+        <div class="about-text">
+          <p>I am a Senior Instructional Systems Designer with a systematic approach to training development. I carry projects through every phase, from needs assessment through evaluation, and care just as much about the thinking behind a course as the experience of taking it.</p>
+          <p>My specialty is high-fidelity, highly interactive courseware: simulations, branching scenarios, gamified skill progressions, and complex interactive multimedia that mirrors the demands of real-world environments. I bring human factors principles into my design process to ensure training is not only engaging but genuinely effective.</p>
+          <p>My work is grounded in a strong academic foundation in psychology and research. I have contributed to human factors research labs and bring that same rigor to how I approach instructional problems, treating design as a discipline informed by evidence, not intuition.</p>
+        </div>
+        <div style="margin-top:2.5rem">
+          <div class="sidebar-block" style="padding-top:0">
+            <div class="sidebar-heading">Instructional Systems Design Models</div>
+            <p style="font-size:0.93rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1rem">My process draws from established models and adapts based on what the project actually needs. The models that I use the most are listed below, though my approach is not limited to them.</p>
+            <ul class="sidebar-list">
+              <li>Analysis, Design, Development, Implementation, and Evaluation (ADDIE)</li>
+              <li>Successive Approximation Model (SAM)</li>
+              <li>Dick, Carey, and Carey systematic design model</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Analysis Methodologies</div>
+            <p style="font-size:0.93rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1rem">When I have the opportunity to do the analysis work, I make the most of it. It informs everything that comes after.</p>
+            <ul class="sidebar-list">
+              <li>Training needs analysis and performance gap analysis</li>
+              <li>Learner, task, and context analysis</li>
+              <li>Cognitive Task Analysis</li>
+              <li>Risk and consequence analysis</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Modalities</div>
+            <p style="font-size:0.93rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1rem">I work across a range of delivery modalities and am comfortable moving between them. What is listed below represents my most common experience.</p>
+            <ul class="sidebar-list">
+              <li>eLearning (asynchronous self-paced)</li>
+              <li>Instructor-led training (ILT)</li>
+              <li>Interactive courseware (ICW/IMI)</li>
+              <li>Synchronous virtual instruction</li>
+              <li>Blended learning</li>
+              <li>Scenario-based and simulation training</li>
+              <li>Gamified learning experiences</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Instructional Deliverables</div>
+            <p style="font-size:0.93rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1rem">The deliverables I produce are shaped by the project. The list below captures common outputs but every engagement looks a little different.</p>
+            <ul class="sidebar-list">
+              <li>Learning objectives and course sequencing documents</li>
+              <li>Interaction design specifications and storyboards</li>
+              <li>Style guides, evaluation plans, and assessments</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Cognitive and Learning Design Frameworks</div>
+            <p style="font-size:0.93rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1rem">My practice is informed by learning science research and I work to stay current as the field evolves. The frameworks below are the ones I draw on most consistently, though they represent a portion of a broader foundation.</p>
+            <ul class="sidebar-list">
+              <li>Cognitive Load Theory (Sweller)</li>
+              <li>Cognitive Theory of Multimedia Learning (Mayer)</li>
+              <li>Bloom's Taxonomy, Revised</li>
+              <li>Gagné's Nine Events of Instruction</li>
+              <li>Keller's Attention, Relevance, Confidence, and Satisfaction (ARCS) Motivation Model</li>
+              <li>Learning Experience Design</li>
+              <li>Adult learning theory</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar">
+          <div class="sidebar-block" style="padding-top:0">
+            <div class="sidebar-heading">Education</div>
+            <ul class="sidebar-list">
+              <li>
+                <strong>M.A. Instructional Design & Technology</strong>
+                <span>University of Central Florida, 2018</span>
+              </li>
+              <li>
+                <strong>B.S. Psychology</strong>
+                <span>University of Central Florida, 2016</span>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Credentials</div>
+            <ul class="sidebar-list">
+              <li>
+                <strong>Articulate Storyline and Rise Certificate</strong>
+                <span>Oregon State University Professional and Continuing Education, 2026</span>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Software</div>
+            <ul class="sidebar-list">
+              <li>Articulate Storyline 360</li>
+              <li>Articulate Rise 360</li>
+              <li>Captivate</li>
+              <li>Canvas LMS</li>
+              <li>Canva</li>
+              <li>Microsoft Office Suite</li>
+              <li>AI Platforms</li>
+              <li>Merge, Manage, Modernize eLearning Development (MELD)</li>
+              <li>Authoring Instructional Materials (AIM)</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-heading">Related Position Titles</div>
+            <ul class="sidebar-list">
+              <li>Instructional Systems Designer</li>
+              <li>Learning Experience Designer</li>
+              <li>Curriculum Developer</li>
+              <li>Learning & Development Specialist</li>
+              <li>Training Systems Analyst</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="page-content">
+    <div class="section-label">Selected work</div>
+    <div class="section-title">Portfolio</div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" onclick="show('op-opportunity')" style="cursor:pointer">
+        <div class="card-thumb warm">🛸</div>
+        <div class="card-body">
+          <div class="card-tag">Interactivity · Scenario-Based · Branching</div>
+          <div class="card-title">Operation Opportunity</div>
+          <div class="card-desc">Mars Rover Operator Certification course. A highly interactive, scenario-based eLearning experience built with Articulate Storyline 360, Blender, and Procreate.</div>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <div class="card-thumb blue">📐</div>
+        <div class="card-body">
+          <div class="card-tag">Analysis · Systems Design · Core Deliverables</div>
+          <div class="card-title">DoD Systems Design & Storyboarding</div>
+          <div class="card-desc">A collection of instructional analysis documents, systems design frameworks, and core instructional deliverables from multiple DoD projects.</div>
+          <div class="nda-note">These samples represent the type of work completed across these projects. All identifying and sensitive information has been removed or replaced to protect PII and contract confidentiality.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="op-opportunity">
+  <div class="page-content">
+    <div class="detail-back" onclick="show('portfolio')">&#8592; Back to Portfolio</div>
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">Operation Opportunity: Mars Rover Operator Certification</div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">The Course</div>
+      <div class="detail-placeholder">
+        Project description placeholder. Describe the course, the learner experience, the interactions, and what makes it notable. Replace this text when ready.
+      </div>
+      <div class="detail-link">View the course [placeholder]</div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Front-End Analysis</div>
+      <div class="detail-placeholder">
+        Analysis description placeholder. Describe the scope of the analysis work, the frameworks applied, and what documents are included. Replace this text when ready.
+      </div>
+      <div class="detail-link">View the analysis document [placeholder]</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="resume">
+  <div class="page-content">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Resume</div>
+    <div class="resume-block">
+      <div class="resume-title">Emma McGeath</div>
+      <div class="resume-sub">Senior Instructional Systems Designer with broad experience in full-lifecycle training development, from needs assessment through evaluation, specializing in complex interactive media and simulation design.</div>
+      <div class="resume-note">Full resume available upon request.</div>
+      <button class="btn-primary" onclick="window.location.href='mailto:your@email.com'">Request my resume</button>
+    </div>
+  </div>
+</section>
+
+<script>
+function show(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id==='home'?'hero-section':id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const navEl=document.getElementById('nav-'+id);
+  if(navEl)navEl.classList.add('active');
+  window.scrollTo(0,0);
+}
+show('home');
+</script>
+</body>
+</html>
